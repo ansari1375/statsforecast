@@ -13,7 +13,7 @@ import pandas as pd
 def prepare_data(df, freq=None):
     series = pd.DataFrame(
         {
-            'ds': pd.to_datetime(df.Date),
+            'ds': pd.to_datetime(df.Date.values),
             'y': df.iloc[:,1].values,
         },
         index=pd.Index([0] * len(df), name='unique_id')
