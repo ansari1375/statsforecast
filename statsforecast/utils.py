@@ -9,6 +9,17 @@ from itertools import chain
 import numpy as np
 import pandas as pd
 
+
+def prepare_data(df, freq=None):
+    series = pd.DataFrame(
+        {
+            'ds': pd.to_datetime(df.Date),
+            'y': df.iloc[:,1].values,
+        },
+        index=pd.Index([0] * len(df), name='unique_id')
+    )
+    return series
+
 # Cell
 def generate_series(
     n_series: int,
